@@ -14,10 +14,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path
-from . import views
+from django.contrib import admin
+from django.urls import path, include
+from chineseHistory import views  # ← импортируем index из chineseHistory.views
 
 urlpatterns = [
-    path('reviews/submit/', views.submit_review, name='submit_review'),
-    path('reviews/get/', views.get_reviews, name='get_reviews'),
+    path('admin/', admin.site.urls),
+    path('', views.index, name='index'),  # ← маршрут главной страницы
+]
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('ваше_приложение.urls')),  # Подключение URL-маршрутов приложения
 ]
