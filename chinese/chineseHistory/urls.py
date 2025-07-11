@@ -1,12 +1,14 @@
 from django.urls import path
 import views
-
+from django.contrib import admin
+from django.urls import path, include
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('admin/', admin.site.urls),
+    path('', views.index, name='index'),  # ← маршрут главной страницы
 ]
 
 urlpatterns = [
-    path('reviews/submit/', views.submit_review, name='submit_review'),
-    path('reviews/get/', views.get_reviews, name='get_reviews'),
+    path('admin/', admin.site.urls),
+    path('', include('chineseHistory.urls')),
 ]
