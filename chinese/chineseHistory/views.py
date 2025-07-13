@@ -30,7 +30,7 @@ def submit_review(request):
 
             review = Review.objects.create(text=review_text)
             return JsonResponse({
-                'status': 'success', 
+                'status': 'success',
                 'message': 'Отзыв сохранен!',
                 'review_id': review.id  # Добавляем ID созданного отзыва
             })
